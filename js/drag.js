@@ -38,6 +38,10 @@
 				return this;
 			},
 			drop: function (e, $el) {
+				$el.offset({
+					top: e.originalEvent.pageY - $el.offsetY,
+					left: e.originalEvent.pageX - $el.offsetX
+				});
 				return this;
 			},
 			end: function (e, $el) {
@@ -47,12 +51,12 @@
 		// ## API
 		// Define API after optional overrides
 		$this.start = settings.start;
-		$this.drag = settings.drag;
+		$this.drag  = settings.drag;
 		$this.enter = settings.enter;
-		$this.over = settings.over;
+		$this.over  = settings.over;
 		$this.leave = settings.leave;
-		$this.drop = settings.drop;
-		$this.end = settings.end;
+		$this.drop  = settings.drop;
+		$this.end   = settings.end;
 		// ## Drop Target
 		// Add event handlers to the drop target
         //    scope the callbacks to be on this instead of the drop target
@@ -71,21 +75,17 @@
 			})
 			.on('drop', function (e) {
 				e.stop();
-				$this.offset({
-					top: e.originalEvent.pageY - $this.offsetY,
-					left: e.originalEvent.pageX - $this.offsetX
-				});
 				$this.drop.call($this, e, $this);
 			});
 		// ## Drag element
 		// Add event handlers to this
-        //    Call the callbacks
+        //    and call the api callbacks
 		$this
-			// Save intitial mouse offset on this
-			//    Enable browser dragging
 			.mousedown(function (e) {
 				e.stopPropagation();
+				// Enable browser dragging
 				this.draggable = true;
+				// Save intitial mouse offset on this
 				$this.offsetX = e.offsetX;
 				$this.offsetY = e.offsetY;
 			})
@@ -93,8 +93,7 @@
 			.on('dragstart', function (e) {
 				e.stopPropagation();
 				e.dataTransfer.effectAllowed = settings.effectAllowed;
-				e.dataTransfer.setData(settings.setData, this.id);
-
+				e.dataTransfer.setData(settings.setData, $this.id);
 				$this.start.call($this, e, $this);
 			})
 			.on('drag', function (e) {

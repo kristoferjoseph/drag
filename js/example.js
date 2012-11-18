@@ -18,10 +18,12 @@
 			console.log("Leave", e, $el);
 			return this;
 		},
-		drop: function (e, $el) {
-			console.log("Drop", e, $el);
-			return this;
-		},
+		// Default behavior is to update drag item position
+		//    uncomment this to override
+		// drop: function (e, $el) {
+		// 	console.log("Drop", e, $el);
+		// 	return this;
+		// },
 		end: function (e, $el) {
 			console.log("End", e, $el);
 			return this;
