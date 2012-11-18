@@ -38,6 +38,7 @@
 				return this;
 			},
 			drop: function (e, $el) {
+				// Default behavior to update the position of the drag item
 				$el.offset({
 					top: e.originalEvent.pageY - $el.offsetY,
 					left: e.originalEvent.pageX - $el.offsetX
@@ -58,7 +59,7 @@
 		$this.drop  = settings.drop;
 		$this.end   = settings.end;
 		// ## Drop Target
-		// Add event handlers to the drop target
+		// Add event handlers to the drop target and
         //    scope the callbacks to be on this instead of the drop target
 		$(settings.target)
 			.on('dragenter', function (e) {
