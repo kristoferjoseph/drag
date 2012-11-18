@@ -50,3 +50,12 @@ You can pass in an optional options object to the constructor
   });
 ```
 > This example shows all of the possible options parameters
+
+# TODO:
+---------
+
+* Test and fix for Firefox
+* Test and fix for Any other non webkit browser
+
+> Yes this has only been tested in Chrome and Safari more to come, pull requests glady accepted.
+
