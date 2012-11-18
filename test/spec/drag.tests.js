@@ -16,16 +16,16 @@
       expect($.Event.prototype.stop).to.be.a("function");
     });
 
-    it("has dragon method", function() {
-      expect($().dragon).to.be.a("function");
+    it("has drag method", function() {
+      expect($().drag).to.be.a("function");
     });
 
   });
 
-  describe("Dragon", function() {
+  describe("drag", function() {
 
     beforeEach(function () {
-      this.$el = $('<div></div>').dragon();
+      this.$el = $('<div></div>').drag();
     });
 
     afterEach(function () {
@@ -68,7 +68,7 @@
 
     it("has start function called on dragstart", function(done) {
       this.timeout(1);
-      this.$el = $('<div></div>').dragon({
+      this.$el = $('<div></div>').drag({
         start: function(e, $el) {
           done();
         }
@@ -87,7 +87,7 @@
     });
 
     it("has dataTransfer effectAllowed set to copyMove by default", function() {
-      this.$el = $('<div></div>').dragon({
+      this.$el = $('<div></div>').drag({
         start: function(e, $el) {
           expect(e.dataTransfer.effectAllowed).to.equal("copyMove");
         }
@@ -106,7 +106,7 @@
     });
 
     it("has dataTransfer data set to Text", function() {
-      this.$el = $('<div></div>').dragon({
+      this.$el = $('<div></div>').drag({
         start: function(e, $el) {
           expect(e.dataTransfer.data).to.equal("Text");
         }
@@ -126,7 +126,7 @@
 
     it("has drag function called on drag", function(done) {
       this.timeout(1);
-      this.$el = $('<div></div>').dragon({
+      this.$el = $('<div></div>').drag({
         drag: function(e, $el) {
           done();
         }
@@ -140,7 +140,7 @@
 
     it("has enter function called when dragenter is triggered on the drop target", function(done) {
       this.timeout(1);
-      this.$el = $('<div></div>').dragon({
+      this.$el = $('<div></div>').drag({
         enter: function(e, $el) {
           done();
         }
@@ -154,7 +154,7 @@
 
     it("has leave function called when dragleave is triggered on the drop target", function(done) {
       this.timeout(1);
-      this.$el = $('<div></div>').dragon({
+      this.$el = $('<div></div>').drag({
         leave: function(e, $el) {
           done();
         }
@@ -168,7 +168,7 @@
 
     it("has drop function called when drop is triggered on the drop target", function(done) {
       this.timeout(1);
-      this.$el = $('<div></div>').dragon({
+      this.$el = $('<div></div>').drag({
         drop: function(e, $el) {
           done();
         }
@@ -186,7 +186,7 @@
 
     it("has end function called on dragend", function(done) {
       this.timeout(1);
-      this.$el = $('<div></div>').dragon({
+      this.$el = $('<div></div>').drag({
         end: function(e, $el) {
           done();
         }

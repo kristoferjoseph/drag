@@ -6,15 +6,15 @@ module.exports = function(grunt) {
         },
         min: {
             dist: {
-                src: ['<banner>', 'js/dragon.js'],
-                dest: 'bin/dragon.min.js'
+                src: ['<banner>', 'js/drag.js'],
+                dest: 'bin/drag.min.js'
             }
         },
         mocha: {
             all: ['test/index.html']
         },
         lint: {
-            all: ['js/dragon.js']
+            all: ['js/drag.js']
         },
         watch: {
             files: '<config:lint.all>',
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         },
         docco: {
             app: {
-                src: ['js/dragon.js']
+                src: ['js/drag.js']
             }
         }
     });

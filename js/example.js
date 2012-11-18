@@ -1,6 +1,6 @@
 (function($) {
 
-	$('.box').dragon({
+	$('.box').drag({
 		target: '.drop-target',
 		start: function (e, $el) {
 			console.log("Start", e, $el);

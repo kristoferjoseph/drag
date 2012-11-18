@@ -1,7 +1,9 @@
-// # Dragon
+// # drag
 (function ($) {
 	'use strict';
-	// ## Event
+	// ## Event extensions
+	// Pushing dataTransfer on to the jQuery event object
+	//   since we need it for setting transfer data
 	$.event.props.push("dataTransfer");
 	// Extend jQuery Event to add a stop convenience function
 	$.Event.prototype.stop = function () {
@@ -9,8 +11,8 @@
 		this.preventDefault();
 	};
 	// ## Plugin
-	// Define the dragon plugin
-	$.fn.dragon = function (options) {
+	// Define the drag plugin
+	$.fn.drag = function (options) {
 		// Demark this as a jQuery object
 		var $this = this,
 			// Define offset variables
@@ -53,7 +55,7 @@
 		$this.end = settings.end;
 		// ## Drop Target
 		// Add event handlers to the drop target
-        //    scope the callbacks to not be on the drop target
+        //    scope the callbacks to be on this instead of the drop target
 		$(settings.target)
 			.on('dragenter', function (e) {
 				e.stop();

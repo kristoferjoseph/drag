@@ -9,7 +9,7 @@
 <body>
   <div id="mocha"></div>
   <script src="../js/libs/jquery.js"></script>
-  <script src="../js/dragon.js"></script>
+  <script src="../js/drag.js"></script>
   <script src="lib/mocha/mocha.js"></script>
   
   <script>mocha.setup({ ui: 'bdd', globals: ['$', 'jQuery*'] })</script>
@@ -17,7 +17,7 @@
   <script src="lib/chai.js"></script>
   <script>expect = chai.expect</script>
   
-  <script src="spec/dragon.tests.js"></script>
+  <script src="spec/drag.tests.js"></script>
   <script>
     $(function() {
       mocha.run();
