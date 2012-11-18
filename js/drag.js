@@ -5,6 +5,17 @@
 	// Pushing dataTransfer on to the jQuery event object
 	//   since we need it for setting transfer data
 	$.event.props.push("dataTransfer");
+	// Add normalization of offsetX and offsetY for FireFox
+	var mouseDownFixHooks = $.event.fixHooks.mousedown.filter;
+	$.event.fixHooks.mousedown.filter = function(event, original) {
+		event = mouseDownFixHooks(event, original);
+		if(!event.offsetX) {
+			event.offsetX = (event.pageX - $(event.target).offset().left);
+			event.offsetY = (event.pageY - $(event.target).offset().top);
+		}
+
+		return event;
+	};
 	// Extend jQuery Event to add a stop convenience function
 	$.Event.prototype.stop = function () {
 		this.stopPropagation();
@@ -21,7 +32,7 @@
 		var settings = $.extend({
 			'target': 'body',
 			'setData': 'Text',
-			'effectAllowed': 'copyMove',
+			'transferEffect': 'copyMove',
 			start: function (e, $el) {
 				return this;
 			},
@@ -68,7 +79,8 @@
 				return false;
 			})
 			.on('dragover', function (e) {
-				e.stop();
+				e.preventDefault();
+				e.dataTransfer.dropEffect = settings.transferEffect;
 				$this.over.call($this, e, $this);
 				return false;
 			})
@@ -90,13 +102,14 @@
 				// Enable browser dragging
 				this.draggable = true;
 				// Save intitial mouse offset on this
-				$this.offsetX = e.offsetX;
-				$this.offsetY = e.offsetY;
+				$this.offsetX = e.offsetX || 0;
+				$this.offsetY = e.offsetY || 0;
+
 			})
 			// Set the dataTransfer options
 			.on('dragstart', function (e) {
 				e.stopPropagation();
-				e.dataTransfer.effectAllowed = settings.effectAllowed;
+				e.dataTransfer.effectAllowed = settings.transferEffect;
 				e.dataTransfer.setData(settings.setData, $this.id);
 				$this.start.call($this, e, $this);
 			})

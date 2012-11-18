@@ -66,6 +66,12 @@
       expect(this.$el.attr('draggable')).to.equal('true');
     });
 
+    it("has original offset stored on mousedown", function() {
+      this.$el.mousedown();
+      expect(this.$el.offsetX).to.not.equal(undefined);
+      expect(this.$el.offsetY).to.not.equal(undefined);
+    });
+
     it("has start function called on dragstart", function(done) {
       this.timeout(1);
       this.$el = $('<div></div>').drag({
