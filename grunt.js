@@ -10,9 +10,6 @@ module.exports = function(grunt) {
                 dest: 'bin/drag.min.js'
             }
         },
-        mocha: {
-            all: ['test/index.html']
-        },
         lint: {
             all: ['js/drag.js']
         },
@@ -27,7 +24,6 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-docco');
     grunt.registerTask('default', ['lint', 'min', 'docco']);
 };
