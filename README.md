@@ -6,7 +6,7 @@ An HTML5 drag & drop plugin for jQuery.
 This is meant to be used as a drop in replacement for jQuery UI draggable in modern browsers that support HTML5 drag & drop.
 Much more performant than jQuery-ui draggable with a more native app feel and without the bloat.
 
-Very inspired by the [dagron](https://github.com/ded/Dagron) ender plugin written by @ded 
+Very inspired by the [dagron](https://github.com/ded/Dagron) ender plugin written by @ded
 
 Example usage
 --------------
@@ -54,8 +54,7 @@ You can pass in an optional options object to the constructor
 # TODO:
 ---------
 
-* Test and fix for Firefox
 * Test and fix for Any other non webkit browser
 
-> Yes this has only been tested in Chrome and Safari more to come, pull requests glady accepted.
+> Has been tested and works in Firefox, Chrome, and Safari
 
