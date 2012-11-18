@@ -54,7 +54,7 @@ You can pass in an optional options object to the constructor
 # TODO:
 ---------
 
-* Test and fix for Any other non webkit browser
+* Test and fix for Any other IE. I don't have a windows box :(
 
 > Has been tested and works in Firefox, Chrome, and Safari
 
