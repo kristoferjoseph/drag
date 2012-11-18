@@ -25,41 +25,39 @@
 	// Define the drag plugin
 	$.fn.drag = function (options) {
 		// Demark this as a jQuery object
-		var $this = this,
-			// Define offset variables
-			offsetX, offsetY;
+		var $this    = this,
 		// Create defaults to be overriden by user options
-		var settings = $.extend({
-			'target': 'body',
-			'setData': 'Text',
-			'transferEffect': 'copyMove',
-			start: function (e, $el) {
-				return this;
-			},
-			drag: function (e, $el) {
-				return this;
-			},
-			enter: function (e, $el) {
-				return this;
-			},
-			over: function (e, $el) {
-				return this;
-			},
-			leave: function (e, $el) {
-				return this;
-			},
-			drop: function (e, $el) {
-				// Default behavior to update the position of the drag item
-				$el.offset({
-					top: e.originalEvent.pageY - $el.offsetY,
-					left: e.originalEvent.pageX - $el.offsetX
-				});
-				return this;
-			},
-			end: function (e, $el) {
-				return this;
-			}
-		}, options);
+			settings = $.extend({
+				'target': 'body',
+				'setData': 'Text',
+				'transferEffect': 'copyMove',
+				start: function (e, $el) {
+					return this;
+				},
+				drag: function (e, $el) {
+					return this;
+				},
+				enter: function (e, $el) {
+					return this;
+				},
+				over: function (e, $el) {
+					return this;
+				},
+				leave: function (e, $el) {
+					return this;
+				},
+				drop: function (e, $el) {
+					// Default behavior to update the position of the drag item
+					$el.offset({
+						top: e.originalEvent.pageY - $el.offsetY,
+						left: e.originalEvent.pageX - $el.offsetX
+					});
+					return this;
+				},
+				end: function (e, $el) {
+					return this;
+				}
+			}, options);
 		// ## API
 		// Define API after optional overrides
 		$this.start = settings.start;
@@ -80,6 +78,8 @@
 			})
 			.on('dragover', function (e) {
 				e.preventDefault();
+				// Set the drop effect to the allowed transfer effect
+				// TODO: Test the hell out of this
 				e.dataTransfer.dropEffect = settings.transferEffect;
 				$this.over.call($this, e, $this);
 				return false;
@@ -104,7 +104,6 @@
 				// Save intitial mouse offset on this
 				$this.offsetX = e.offsetX || 0;
 				$this.offsetY = e.offsetY || 0;
-
 			})
 			// Set the dataTransfer options
 			.on('dragstart', function (e) {
