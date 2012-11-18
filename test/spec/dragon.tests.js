@@ -175,7 +175,11 @@
       });
 
       $('body').trigger({
-        'type': 'drop'
+        'type': 'drop',
+        'originalEvent': {
+          'pageX': 0,
+          'pageY': 0
+        }
       });
 
     });

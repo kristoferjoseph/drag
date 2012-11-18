@@ -1,3 +1,26 @@
 body {
 	font-family: sans-serif;
 }
+
+[draggable=true] {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: #ddd;
+    z-index: 1000;
+}
+
+.drop-target {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 300px;
+    background: #00cc88;
+}
