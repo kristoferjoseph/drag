@@ -3,6 +3,7 @@ body {
 }
 
 [draggable=true] {
+    -khtml-user-drag: element;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;

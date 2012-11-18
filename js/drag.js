@@ -65,10 +65,12 @@
 			.on('dragenter', function (e) {
 				e.stop();
 				$this.enter.call($this, e, $this);
+				return false;
 			})
 			.on('dragover', function (e) {
 				e.stop();
 				$this.over.call($this, e, $this);
+				return false;
 			})
 			.on('dragleave', function (e) {
 				e.stopPropagation();
@@ -77,6 +79,7 @@
 			.on('drop', function (e) {
 				e.stop();
 				$this.drop.call($this, e, $this);
+				return false;
 			});
 		// ## Drag element
 		// Add event handlers to this
