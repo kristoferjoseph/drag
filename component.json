@@ -10,9 +10,7 @@
     "jQuery",
     "plugin"
   ],
-    "dependencies": {
-    "jquery": "~1.8.3"
-  },
+  "dependencies": {},
   "development": {},
   "license": "MIT",
   "main": "./js/bin/drag.min.js",
