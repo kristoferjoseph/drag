@@ -13,9 +13,9 @@
   "dependencies": {},
   "development": {},
   "license": "MIT",
-  "main": "./js/bin/drag.min.js",
+  "main": "./js/drag.js",
   "scripts": [
-    "js/bin/drag.min.js",
+    "bin/drag.min.js",
     "js/drag.js"
   ]
 }
