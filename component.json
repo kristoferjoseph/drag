@@ -1,0 +1,23 @@
+{
+  "name": "drag",
+  "repo": "kristoferjoseph/drag",
+  "description": "HTML5 drag & drop jQuery plugin",
+  "version": "0.0.1-alpha",
+  "keywords": [
+    "HTML5",
+    "Drag",
+    "Drop",
+    "jQuery",
+    "plugin"
+  ],
+    "dependencies": {
+    "jquery": "~1.8.3"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "./js/bin/drag.min.js",
+  "scripts": [
+    "js/bin/drag.min.js",
+    "js/drag.js"
+  ]
+}
