@@ -5,17 +5,19 @@
 	// Pushing dataTransfer on to the jQuery event object
 	//   since we need it for setting transfer data
 	$.event.props.push("dataTransfer");
-	// Add normalization of offsetX and offsetY for FireFox
-	var mouseDownFixHooks = $.event.fixHooks.mousedown.filter;
-	$.event.fixHooks.mousedown.filter = function(event, original) {
-		event = mouseDownFixHooks(event, original);
-		if(!event.offsetX) {
-			event.offsetX = (event.pageX - $(event.target).offset().left);
-			event.offsetY = (event.pageY - $(event.target).offset().top);
-		}
+	if (/firefox/i.test(navigator.userAgent)) {
+		// Add normalization of offsetX and offsetY for FireFox
+		var mouseDownFixHooks = $.event.fixHooks.mousedown.filter;
+		$.event.fixHooks.mousedown.filter = function(event, original) {
+			event = mouseDownFixHooks(event, original);
+			if(!event.offsetX) {
+				event.offsetX = (event.pageX - $(event.target).offset().left);
+				event.offsetY = (event.pageY - $(event.target).offset().top);
+			}
 
-		return event;
-	};
+			return event;
+		};
+	}
 	// Extend jQuery Event to add a stop convenience function
 	$.Event.prototype.stop = function () {
 		this.stopPropagation();
