@@ -21,8 +21,8 @@ You can pass in an optional options object to the constructor
   $('.selector').drag({
     target: '.drop-target',
     'setData': 'Text',
-  	'effectAllowed': 'copyMove',
-  	start: function (e, $el) {
+    'effectAllowed': 'copyMove',
+    start: function (e, $el) {
       console.log("Start", e, $el);
       return this;
     },
